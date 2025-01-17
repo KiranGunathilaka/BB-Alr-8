@@ -31,7 +31,7 @@ namespace Config
     static const double Kd = 0.11;
 
     // Motors
-    const int TIME_90_TURN = 1750;
+    const int TIME_90_TURN = 1600;
     const int TIME_PER_CELL = 1850; 
 
     static constexpr double MAX_SPEED = 10.0;
@@ -63,7 +63,7 @@ namespace Config
 
     // Threshold values for detecting walls
     const float L_WALL_THRESHOLD = 25;
-    const float F_WALL_THRESHOLD = 15;
+    const float F_WALL_THRESHOLD = 18;
     const float R_WALL_THRESHOLD = 25;
 
     const float COS10 = 0.98480775301;
