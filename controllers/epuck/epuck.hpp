@@ -49,7 +49,8 @@ public:
     
 private:
    
-    
+    webots::PositionSensor *leftPosSensor;
+    webots::PositionSensor *rightPosSensor;
     
     webots::LED *leds[Config::NUM_LEDS];
     
