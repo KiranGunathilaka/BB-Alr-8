@@ -58,7 +58,7 @@ void go(Epuck& epuck, double* sensorValues) {
         }
 
         // Wait for robot stabilization before checking the next move
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(150));
         if (nextMove == Config::Action::IDLE) {
             break;
         }

@@ -1,8 +1,8 @@
 build/release/motors.o: motors.cpp motors.hpp \
- /usr/local/webots/include/controller/cpp/webots/Robot.hpp \
- /usr/local/webots/include/controller/cpp/webots/Motor.hpp \
- /usr/local/webots/include/controller/cpp/webots/Device.hpp \
- /usr/local/webots/include/controller/cpp/webots/../../c/webots/types.h \
+ C:\Program\ Files\Webots/include/controller/cpp/webots/Robot.hpp \
+ C:\Program\ Files\Webots/include/controller/cpp/webots/Motor.hpp \
+ C:\Program\ Files\Webots/include/controller/cpp/webots/Device.hpp \
+ C:/Program\ Files/Webots/include/controller/c/webots/types.h \
  sensor_manager.hpp \
- /usr/local/webots/include/controller/cpp/webots/DistanceSensor.hpp \
+ C:\Program\ Files\Webots/include/controller/cpp/webots/DistanceSensor.hpp \
  config.hpp

@@ -154,9 +154,9 @@ void updateHeading(Epuck& epuck, Config::Action NextAction){
         }
     }
 }
-
+int GoToColorIdX = 0;
 Config::Action solver(Epuck& epuck){
-    int p = 0;
+    
 
     int X = epuck.position.x_mapped;
     int Y = epuck.position.y_mapped;
@@ -170,16 +170,18 @@ Config::Action solver(Epuck& epuck){
     }
     else if(epuck.reachedColor && epuck.floodfill.getCellCost(X,Y) == 0){
         epuck.reachedColor = false;
-         p = 1;
+         GoToColorIdX++;
+         std::cout << "Red" << std::endl;
     }
 
+    if(GoToColorIdX == 5){
+        return Config::Action::IDLE;
+    }
 
-    epuck.floodfill.floodMaze(X , Y , Config::cellOrder[0].first, Config::cellOrder[0].second);
+    epuck.floodfill.floodMaze(X , Y , Config::cellOrder[GoToColorIdX].first, Config::cellOrder[GoToColorIdX].second);
     //epuck.floodfill.printCosts(); 
 
-    if (p==1){
-    	return Config::Action::IDLE;
-    }
+    
 
     Config::Action nextAction = NextAction(epuck);
 
