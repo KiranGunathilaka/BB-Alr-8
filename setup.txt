@@ -1,0 +1,4 @@
+cd devlopment/
+source dev/bin/activate
+cd kobuki/BB-Alr-8/final_kobuki_codes
+python bb.py

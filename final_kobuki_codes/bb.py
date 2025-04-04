@@ -56,7 +56,7 @@ class ColorSequenceRobot:
 
         # Color detection parameters (HSV ranges)
         self.color_ranges = {
-            "blue": (np.array([20, 20, 20]), np.array([255, 255, 255])),
+            "blue": (np.array([90, 50, 50]), np.array([130, 255, 255])),
             "red1": (
                 np.array([0, 120, 70]),
                 np.array([10, 255, 255]),
@@ -78,7 +78,7 @@ class ColorSequenceRobot:
 
         # Object detection parameters
         self.min_box_area = 500
-        self.goal_area_threshold = 230000  # Adjust based on your camera and objects
+        self.goal_area_threshold = 20000  # Adjust based on your camera and objects
         self.last_detection_time = time.time()
         self.detection_timeout = 2  # seconds to wait before giving up
 
@@ -87,7 +87,7 @@ class ColorSequenceRobot:
         self.turn_start_time = 0
         self.forward_time = 3000  # milliseconds, adjustable
         self.timer = 0
-        self.retreat_time = 4000  # milliseconds
+        self.retreat_time = 5000  # milliseconds
 
         # Create visualization window
         cv2.namedWindow("Robot View", cv2.WINDOW_NORMAL)
@@ -263,7 +263,8 @@ class ColorSequenceRobot:
 
     def is_box_captured(self, y, h):
         """Check if box is captured (near bottom of frame)."""
-        return y > self.height * 0.88
+        CAPTURE_THERESHOLD = 0.9
+        return y > self.height * CAPTURE_THERESHOLD
 
     def is_at_goal(self, area):
         """Check if robot has reached the goal based on area."""
@@ -289,6 +290,8 @@ class ColorSequenceRobot:
         robot_thread = threading.Thread(target=self.control_robot)
         robot_thread.daemon = True
         robot_thread.start()
+
+        TURN_TIME = 8000
 
         # Play start sound
         self.robot.play_on_sound()
@@ -340,7 +343,7 @@ class ColorSequenceRobot:
                     )
 
                     # After 2 seconds, move to next task
-                    if self.timer >= 2000:
+                    if self.timer >= TURN_TIME:
                         self.current_task = "go_forward"
                         start_time = current_time  # Reset timer
                         print("Initial left turn complete, moving forward")
@@ -385,7 +388,7 @@ class ColorSequenceRobot:
                     )
 
                     # After 2 seconds, start looking for the first box
-                    if self.timer >= 2000:
+                    if self.timer >= TURN_TIME:
                         self.current_task = "find_box"
                         self.target_mode = "box"
                         start_time = current_time  # Reset timer
@@ -460,6 +463,7 @@ class ColorSequenceRobot:
                 elif self.current_task == "turn_to_goal":
                     # Turn to face the goal area
                     self.direction = "Turn Right"
+                    #self.direction = "Turn Left"
                     self.target_mode = "goal"
 
                     # Display status
@@ -474,7 +478,7 @@ class ColorSequenceRobot:
                     )
 
                     # After 2 seconds, start looking for the goal
-                    if self.timer >= 2000:
+                    if self.timer >= TURN_TIME:
                         self.current_task = "find_goal"
                         start_time = current_time  # Reset timer
                         print(
@@ -521,9 +525,9 @@ class ColorSequenceRobot:
                     if not detected:
                         # Lost the goal, go back to search
                         self.current_task = "find_goal"
-                        self.direction = "Stop"
+                        self.direction = "Stop" 
                         print(f"Lost {self.current_color} goal, searching again")
-                    elif self.is_at_goal(area):
+                    elif self.is_at_goal(area) : 
                         # Reached the goal
                         self.direction = "Stop"
                         self.current_task = "retreat"
@@ -647,7 +651,7 @@ def main():
     robot.retreat_time = 5000
 
     # Adjust goal area threshold based on your objects and camera
-    robot.goal_area_threshold = 2300000
+    robot.goal_area_threshold = 70000
 
     print(
         "Robot configured. Press 'q' to quit, 'f'/'g' to adjust forward time, 'r' to reset."
