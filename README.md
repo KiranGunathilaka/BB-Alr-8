@@ -48,7 +48,7 @@ The robot must:
   - Pink: `#FF00FF`
   - Brown: `#A5691E`
   - Green: `#00FF00`
-
+[Round 1 Video](https://drive.google.com/file/d/1M6lFLquzub9HMc539oUPFzgBz2VdT7C5/view?usp=sharing)
 ---
 
 ## 🔥 Round 2 – Semifinal: Survivor Rescue in Fire Maze
