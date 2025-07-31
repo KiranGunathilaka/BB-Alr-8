@@ -48,6 +48,7 @@ The robot must:
   - Pink: `#FF00FF`
   - Brown: `#A5691E`
   - Green: `#00FF00`
+
 [Round 1 Video](https://drive.google.com/file/d/1M6lFLquzub9HMc539oUPFzgBz2VdT7C5/view?usp=sharing)
 ---
 
@@ -83,6 +84,7 @@ Simulate a custom-built robot to navigate a dangerous maze, rescue **3 survivors
   - Penalties for fire damage  
   - Disqualification if score ≤ 0
 
+[SemiFinal Round Video](https://drive.google.com/drive/folders/1DYWvHM2KFNGdlniwQ_PdxlmAuioIl3Hn)
 ---
 
 ## 📦 Round 3 – Final: Real-World Color Matching & Box Pushing (Kobuki + Raspberry Pi 5 + Kinect)
